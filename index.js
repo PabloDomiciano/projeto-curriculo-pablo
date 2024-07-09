@@ -1,9 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
   verificarTema();
-  localizacao();
+  verificarLocalizacaoStorage();
 });
 
-function localizacao() {
+function verificarLocalizacaoStorage() {
+  const localizacao = localStorage.getItem("localizacao");
+  console.log(localizacao);
+  if (localizacao) {
+    document.getElementById("localizacao").value = localizacao;
+  } else {
+    getLocalizacao();
+  }
+}
+
+function getLocalizacao() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
@@ -13,6 +23,7 @@ function localizacao() {
         .then((data) => {
           const localizacao = data.region || `${lat}, ${long}`;
           document.getElementById("localizacao").value = localizacao;
+          localStorage.setItem("localizacao", localizacao);
         })
         .catch((error) => {
           console.error("Alguma coisa deu errado!", error);
