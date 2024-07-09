@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   verificarTema();
   verificarLocalizacaoStorage();
+  lerCurriculo();
 });
 
 function verificarLocalizacaoStorage() {
@@ -79,4 +80,24 @@ function apresentarCurriculo(data) {
   const mostrarCurriculo = document.getElementById("mostrarCurriculo");
   mostrarCurriculo.innerHTML = "";
   mostrarCurriculo.appendChild(template);
+}
+
+function lerCurriculo() {
+  const curriculo = JSON.parse(localStorage.getItem(curriculo));
+  if (curriculo) {
+    apresentarCurriculo(curriculo);
+  }
+}
+
+function copiar() {
+  const curriculo = document.getElementById("mostrarCurriculo").textContent;
+  navigator.clipboard
+    .writeText(curriculo)
+    .then(() => {
+      alert("Conteúdo Copiado !");
+    })
+    .catch((error) => {
+      console.error("erro ao copiar", error);
+      alert("Erro ao copiar !");
+    });
 }
