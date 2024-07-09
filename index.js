@@ -83,7 +83,7 @@ function apresentarCurriculo(data) {
 }
 
 function lerCurriculo() {
-  const curriculo = JSON.parse(localStorage.getItem(curriculo));
+  const curriculo = JSON.parse(localStorage.getItem("curriculo"));
   if (curriculo) {
     apresentarCurriculo(curriculo);
   }
