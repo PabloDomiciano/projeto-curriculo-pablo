@@ -9,7 +9,8 @@
   <body data-tema="light">
     <div class="container">
       <div class="menu-superior">
-        <a href="#" onclick="alterarTema()" id="linkAlterarTema">Alterar Tema</a>
+        <a href="#" onclick="alterarTema()" id="linkAlterarTema">Alterar
+          Tema</a>
       </div>
       <h1 id="titulo-principal">Gerador de CV</h1>
       <div id="form-container">
@@ -27,11 +28,24 @@
           placeholder="Suas experiências profissionais"></textarea>
         <label for="habilidades">Habilidades:</label>
         <textarea id="habilidades" placeholder="Suas habilidades"></textarea>
-        <button onclick="gerar()">Gerar CV</button>
+        <button onclick="gerarCurriculo()">Gerar CV</button>
       </div>
       <div id="cv-container">
         <h2 id="cv-titulo">Seu CV</h2>
       </div>
+      <div id="mostrarCurriculo">
+
+      </div>
+      <template id="templateCurriculo">
+        <div class="curriculo">
+          <h1 class="nome"></h1>
+          <p class="email"></p>
+          <p class="telefone"></p>
+          <p class="localizacao"></p>
+          <p class="experiencia"></p>
+          <p class="habilidades"></p>
+        </div>
+      </template>
     </div>
     <script src="index.js"></script>
   </body>

@@ -45,3 +45,38 @@ function alterarTema() {
   document.body.setAttribute("data-tema", novoTema);
   localStorage.setItem("tema", novoTema);
 }
+
+function gerarCurriculo() {
+  const nome = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const telefone = document.getElementById("telefone").value;
+  const localizacao = document.getElementById("localizacao").value;
+  const experiencia = document.getElementById("experiencia").value;
+  const habilidades = document.getElementById("habilidades").value;
+  const curriculo = {
+    nome,
+    email,
+    telefone,
+    localizacao,
+    experiencia,
+    habilidades,
+  };
+  localStorage.setItem("curriculo", JSON.stringify(curriculo));
+  apresentarCurriculo(curriculo);
+}
+
+function apresentarCurriculo(data) {
+  const template = document
+    .getElementById("templateCurriculo")
+    .content.cloneNode(true);
+  template.querySelector(".nome").textContent = data.nome;
+  template.querySelector(".email").textContent = data.email;
+  template.querySelector(".telefone").textContent = data.telefone;
+  template.querySelector(".localizacao").textContent = data.localizacao;
+  template.querySelector(".experiencia").textContent = data.experiencia;
+  template.querySelector(".habilidades").textContent = data.habilidades;
+
+  const mostrarCurriculo = document.getElementById("mostrarCurriculo");
+  mostrarCurriculo.innerHTML = "";
+  mostrarCurriculo.appendChild(template);
+}
